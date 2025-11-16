@@ -1,7 +1,0 @@
-venv
-.idea
-src/test.py
-src/resources/test.csv
-**/__pycache__/
-dist
-src/multi_sub_package.egg-info

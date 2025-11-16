@@ -1,2 +1,2 @@
-# multi-sub-packages
-python package with multiple sub packages
+# Todo App
+Simple todo app built with Angular
