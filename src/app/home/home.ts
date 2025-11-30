@@ -1,0 +1,67 @@
+import { Component, computed } from '@angular/core';
+import { TodoItem } from '../models/todo-item';
+import { ItemView } from '../item-view/item-view';
+
+@Component({
+  selector: 'app-home',
+  imports: [ItemView],
+  templateUrl: './home.html',
+  styleUrl: './home.scss',
+})
+export class Home {
+  items: TodoItem[] = [
+    {
+      id: 1,
+      title: 'Complete project documentation',
+      description:
+        'Write comprehensive documentation for the todo application including API endpoints and usage examples',
+      completed: false,
+    },
+    {
+      id: 2,
+      title: 'Review pull requests',
+      description: 'Check and approve pending pull requests from the team',
+      completed: true,
+    },
+    {
+      id: 3,
+      title: 'Update dependencies',
+      description: 'Update all npm packages to their latest stable versions',
+      completed: false,
+    },
+    {
+      id: 4,
+      title: 'Fix navigation bug',
+      description: 'Resolve the issue with menu navigation on mobile devices',
+      completed: true,
+    },
+    {
+      id: 5,
+      title: 'Add unit tests',
+      description: 'Write unit tests for the todo service and components',
+      completed: false,
+    },
+    {
+      id: 6,
+      title: 'Optimize performance',
+      description: 'Improve application load time and reduce bundle size',
+      completed: false,
+    },
+    {
+      id: 7,
+      title: 'Design new UI mockups',
+      description: 'Create mockups for the upcoming dashboard redesign',
+      completed: true,
+    },
+    {
+      id: 8,
+      title: 'Setup CI/CD pipeline',
+      description: 'Configure automated testing and deployment using GitHub Actions',
+      completed: false,
+    },
+  ];
+
+  completedCount = computed(() => this.items.filter(item => item.completed).length);
+  pendingCount = computed(() => this.items.filter(item => !item.completed).length);
+  progressPercentage = computed(() => Math.round((this.completedCount() / this.items.length) * 100));
+}
