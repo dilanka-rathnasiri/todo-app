@@ -2,7 +2,7 @@
   <h2 class="text-center m-3">Todo List</h2>
   <div id="homeContentBox">
     <div id="homeItemBox">
-      @for (item of items; track item.id) {
+      @for (item of items(); track item.id) {
         <app-item-view [item]="item"></app-item-view>
       }
     </div>
@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
           <p class="card-text">
-            Total tasks: <strong>{{ items.length }}</strong>
+            Total tasks: <strong>{{ items().length }}</strong>
           </p>
           <p class="card-text">
             Completed: <strong>{{ completedCount() }}</strong>
