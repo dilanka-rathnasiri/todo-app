@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, Signal } from '@angular/core';
 import { TodoItem } from '../models/todo-item';
 import { ItemView } from '../item-view/item-view';
 
@@ -61,7 +61,13 @@ export class Home {
     },
   ];
 
-  completedCount = computed(() => this.items.filter(item => item.completed).length);
-  pendingCount = computed(() => this.items.filter(item => !item.completed).length);
-  progressPercentage = computed(() => Math.round((this.completedCount() / this.items.length) * 100));
+  completedCount: Signal<number> = computed(
+    () => this.items.filter((item) => item.completed).length,
+  );
+  pendingCount: Signal<number> = computed(
+    () => this.items.filter((item) => !item.completed).length,
+  );
+  progressPercentage: Signal<string> = computed(
+    () => `${Math.round((this.completedCount() / this.items.length) * 100)}%`,
+  );
 }

@@ -1,15 +1,15 @@
-<div class="container mt-4">
-  <h2 class="mb-4">Todo List</h2>
-  <div class="row">
-    <div class="col-md-8">
+<div class="container">
+  <h2 class="text-center m-3">Todo List</h2>
+  <div id="homeContentBox">
+    <div id="homeItemBox">
       @for (item of items; track item.id) {
         <app-item-view [item]="item"></app-item-view>
       }
     </div>
-    <div class="col-md-4">
+    <div>
       <div class="card">
         <div class="card-header">
-          <h5 class="card-title mb-0">Summary</h5>
+          <h5 class="card-title text-center">Summary</h5>
         </div>
         <div class="card-body">
           <p class="card-text">
@@ -21,12 +21,9 @@
           <p class="card-text">
             Pending: <strong>{{ pendingCount() }}</strong>
           </p>
-          <div class="progress mt-3">
-            <div 
-              class="progress-bar bg-success" 
-              role="progressbar" 
-              [style.width.%]="progressPercentage()">
-              {{ progressPercentage() }}%
+          <div class="progress" role="progressbar">
+            <div class="progress-bar bg-success" [style.width]="progressPercentage()">
+              {{ progressPercentage() }}
             </div>
           </div>
         </div>

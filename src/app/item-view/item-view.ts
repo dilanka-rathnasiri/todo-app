@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
 import { TodoItem } from '../models/todo-item';
 
 @Component({
@@ -8,5 +8,5 @@ import { TodoItem } from '../models/todo-item';
   styleUrl: './item-view.scss',
 })
 export class ItemView {
-  item = input.required<TodoItem>();
+  item: InputSignal<TodoItem> = input.required<TodoItem>();
 }
