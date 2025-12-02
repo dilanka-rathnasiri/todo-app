@@ -1,0 +1,23 @@
+<div id="itemDetailMainBox" class="container">
+  @if (item) {
+    <div class="card">
+      <h5 class="card-header text-white text-center">Todo Item Details</h5>
+      <div class="card-body">
+        <div class="item-detail-row"><b class="text-muted">ID: </b> {{ item.id }}</div>
+        <div class="item-detail-row"><b class="text-muted">Title: </b> {{ item.title }}</div>
+        <div class="item-detail-row">
+          <b class="text-muted">Description: </b> {{ item.description }}
+        </div>
+        <div class="item-detail-row">
+          <b class="text-muted">Status: </b>
+          <app-status-badge [isCompleted]="item.completed"></app-status-badge>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="alert alert-danger text-center" role="alert">Item not found!</div>
+  }
+  <a routerLink="/">
+    <button class="btn btn-primary">Back to List</button>
+  </a>
+</div>

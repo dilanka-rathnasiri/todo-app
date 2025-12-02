@@ -9,21 +9,19 @@
       />
     </div>
     <div id="itemViewContent">
-      <h5 [class.text-decoration-line-through]="item().completed">
-        {{ item().title }}
+      <h5>
+        <a
+          [routerLink]="['/item', item().id]"
+          [class.text-decoration-line-through]="item().completed"
+          class="text-decoration-none text-white"
+        >
+          {{ item().title }}
+        </a>
       </h5>
       <p class="text-muted mb-0">
         {{ item().description }}
       </p>
     </div>
-    <div>
-      <span
-        class="badge"
-        [class.bg-success]="item().completed"
-        [class.bg-secondary]="!item().completed"
-      >
-        {{ item().completed ? 'Completed' : 'Pending' }}
-      </span>
-    </div>
+    <app-status-badge [isCompleted]="item().completed"></app-status-badge>
   </div>
 </div>

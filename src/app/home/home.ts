@@ -1,7 +1,7 @@
-import { Component, computed, Signal, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, Signal, OnInit, signal } from '@angular/core';
 import { TodoItem } from '../models/todo-item';
 import { ItemView } from '../item-view/item-view';
-import { DataServices } from '../services/data-services';
+import { DataStoreServices } from '../services/data-store-services';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +10,14 @@ import { DataServices } from '../services/data-services';
   styleUrl: './home.scss',
 })
 export class Home implements OnInit {
-  items: WritableSignal<TodoItem[]> = signal<TodoItem[]>([]);
+  items: Signal<TodoItem[]> = signal<TodoItem[]>([]);
 
-  constructor(private dataServices: DataServices) {}
+  constructor(private dataStoreServices: DataStoreServices) {
+    this.items = this.dataStoreServices.getTodoItems();
+  }
 
-  ngOnInit() {
-    this.dataServices.getTodoItems<TodoItem>('assets/data.json').subscribe((data) => {
-      this.items.set(data);
-    });
+  ngOnInit(): void {
+    this.dataStoreServices.loadTodoItems();
   }
 
   completedCount: Signal<number> = computed(

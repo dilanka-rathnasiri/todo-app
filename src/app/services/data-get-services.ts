@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class DataServices {
+export class DataGetServices {
   constructor(private http: HttpClient) {}
 
   getTodoItems<T>(url: string): Observable<T[]> {
