@@ -1,0 +1,13 @@
+#homeContentBox {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 2rem;
+  justify-items: stretch;
+}
+
+#homeItemBox {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
