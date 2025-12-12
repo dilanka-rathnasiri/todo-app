@@ -8,7 +8,9 @@ import { DataGetServices } from './data-get-services';
 export class DataStoreServices {
   private todoItems: WritableSignal<TodoItem[]> = signal([]);
 
-  constructor(private dataGetServices: DataGetServices) {}
+  constructor(private dataGetServices: DataGetServices) {
+    this.loadTodoItems();
+  }
 
   public loadTodoItems(): void {
     this.dataGetServices.getTodoItems<TodoItem>('assets/data.json').subscribe((data) => {
@@ -18,6 +20,12 @@ export class DataStoreServices {
 
   public getTodoItems(): Signal<TodoItem[]> {
     return this.todoItems.asReadonly();
+  }
+
+  public modifyTodoItem(id: number, updatedItem: Partial<TodoItem>): void {
+    this.todoItems.update((items) =>
+      items.map((item) => (item.id === id ? { ...item, ...updatedItem } : item)),
+    );
   }
 
   public getTodoItemById(id: number): TodoItem | undefined {

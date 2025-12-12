@@ -12,12 +12,10 @@ import { DataStoreServices } from '../services/data-store-services';
 export class Home implements OnInit {
   items: Signal<TodoItem[]> = signal<TodoItem[]>([]);
 
-  constructor(private dataStoreServices: DataStoreServices) {
-    this.items = this.dataStoreServices.getTodoItems();
-  }
+  constructor(private dataStoreServices: DataStoreServices) {}
 
   ngOnInit(): void {
-    this.dataStoreServices.loadTodoItems();
+    this.items = this.dataStoreServices.getTodoItems();
   }
 
   completedCount: Signal<number> = computed(

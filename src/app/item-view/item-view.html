@@ -5,7 +5,7 @@
         type="checkbox"
         class="form-check-input"
         [checked]="item().completed"
-        disabled="true"
+        (change)="toggleCompletion()"
       />
     </div>
     <div id="itemViewContent">
