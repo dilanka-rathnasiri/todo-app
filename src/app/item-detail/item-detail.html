@@ -1,17 +1,24 @@
 <div id="itemDetailMainBox" class="container">
-  @if (item) {
+  @if (itemIndex() !== -1) {
     <div class="card">
       <h5 class="card-header text-white text-center">Todo Item Details</h5>
       <div class="card-body">
-        <div class="item-detail-row"><b class="text-muted">ID: </b> {{ item.id }}</div>
-        <div class="item-detail-row"><b class="text-muted">Title: </b> {{ item.title }}</div>
+        <div class="item-detail-row"><b class="text-muted">ID: </b> {{ item().id }}</div>
+        <div class="item-detail-row"><b class="text-muted">Title: </b> {{ item().title }}</div>
         <div class="item-detail-row">
-          <b class="text-muted">Description: </b> {{ item.description }}
+          <b class="text-muted">Description: </b> {{ item().description }}
         </div>
         <div class="item-detail-row">
           <b class="text-muted">Status: </b>
-          <app-status-badge [isCompleted]="item.completed"></app-status-badge>
+          <app-status-badge [isCompleted]="item().completed"></app-status-badge>
         </div>
+      </div>
+      <div class="card-footer">
+        @if (!item().completed) {
+          <button class="btn btn-success" (click)="markCompleted()">Mark Completed</button>
+        } @else {
+          <button class="btn btn-warning" (click)="markUncompleted()">Mark Uncompleted</button>
+        }
       </div>
     </div>
   } @else {

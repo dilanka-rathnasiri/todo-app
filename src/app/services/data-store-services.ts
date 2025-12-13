@@ -27,8 +27,4 @@ export class DataStoreServices {
       items.map((item) => (item.id === id ? { ...item, ...updatedItem } : item)),
     );
   }
-
-  public getTodoItemById(id: number): TodoItem | undefined {
-    return this.todoItems().find((item) => item.id === id);
-  }
 }
