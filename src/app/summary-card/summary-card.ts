@@ -1,24 +1,15 @@
-import { Component, computed, Signal, OnInit, signal } from '@angular/core';
+import { Component, computed, Signal } from '@angular/core';
 import { TodoItem } from '../models/todo-item';
-import { ItemView } from '../item-view/item-view';
 import { DataStoreServices } from '../services/data-store-services';
-import { AddTodo } from '../add-todo/add-todo';
-import { SummaryCard } from '../summary-card/summary-card';
 
 @Component({
-  selector: 'app-home',
-  imports: [ItemView, AddTodo, SummaryCard],
-  templateUrl: './home.html',
-  styleUrl: './home.scss',
+  selector: 'app-summary-card',
+  templateUrl: './summary-card.html',
 })
-export class Home implements OnInit {
-  items: Signal<TodoItem[]> = signal<TodoItem[]>([]);
+export class SummaryCard {
+  items: Signal<TodoItem[]> = computed(() => this.dataStoreServices.getTodoItems()());
 
   constructor(private dataStoreServices: DataStoreServices) {}
-
-  ngOnInit(): void {
-    this.items = this.dataStoreServices.getTodoItems();
-  }
 
   completedCount: Signal<number> = computed(
     () => this.items().filter((item) => item.completed).length,
