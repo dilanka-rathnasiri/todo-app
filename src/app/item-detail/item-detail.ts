@@ -46,4 +46,9 @@ export class ItemDetail {
   markUncompleted(): void {
     this.dataStoreServices.modifyTodoItem(this.id, { completed: false });
   }
+
+  deleteItem(): void {
+    const currentItem = this.item();
+    this.dataStoreServices.deleteTodoItem(currentItem.id);
+  }
 }

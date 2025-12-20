@@ -41,4 +41,8 @@ export class DataStoreServices {
     const newItem: TodoItem = { ...item, id: newId };
     this.todoItems.update((items) => [...items, newItem]);
   }
+
+  public deleteTodoItem(id: number): void {
+    this.todoItems.update((items) => items.filter((item) => item.id !== id));
+  }
 }

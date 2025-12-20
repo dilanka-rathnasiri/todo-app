@@ -20,4 +20,9 @@ export class ItemView {
     const newCompletedStatus = !currentItem.completed;
     this.dataStoreServices.modifyTodoItem(currentItem.id, { completed: newCompletedStatus });
   }
+
+  deleteItem(): void {
+    const currentItem = this.item();
+    this.dataStoreServices.deleteTodoItem(currentItem.id);
+  }
 }
