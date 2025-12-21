@@ -1,21 +1,21 @@
 <div class="card">
-  <div class="card-header">
-    <h5 class="card-title text-center">Summary</h5>
-  </div>
-  <div class="card-body">
-    <p class="card-text">
-      Total tasks: <strong>{{ items().length }}</strong>
-    </p>
-    <p class="card-text">
-      Completed: <strong>{{ completedCount() }}</strong>
-    </p>
-    <p class="card-text">
-      Pending: <strong>{{ pendingCount() }}</strong>
-    </p>
-    <div class="progress" role="progressbar">
-      <div class="progress-bar bg-success" [style.width]="progressPercentage()">
-        {{ progressPercentage() }}
-      </div>
+    <div class="card-header">
+        <h5 class="card-title text-center">Summary</h5>
     </div>
-  </div>
+    <div class="card-body">
+        <p class="card-text">
+            Total tasks: <strong>{{ items().length }}</strong>
+        </p>
+        <p class="card-text">
+            Completed: <strong>{{ completedCount() }}</strong>
+        </p>
+        <p class="card-text">
+            Pending: <strong>{{ pendingCount() }}</strong>
+        </p>
+        <div class="progress" role="progressbar">
+            <div class="progress-bar bg-success" [style.width]="progressPercentage()">
+                {{ progressPercentage() }}
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,14 +1,14 @@
 <div class="container">
-  <h2 class="text-center m-3">Todo List</h2>
-  <div id="homeContentBox">
-    <div id="homeItemBox">
-      @for (item of items(); track item.id) {
-        <app-item-view [item]="item"></app-item-view>
-      }
+    <h2 class="text-center m-3">Todo List</h2>
+    <div id="homeContentBox">
+        <div id="homeItemBox">
+            @for (item of items(); track item.id) {
+                <app-item-view [item]="item"></app-item-view>
+            }
+        </div>
+        <div>
+            <app-summary-card></app-summary-card>
+            <app-add-todo></app-add-todo>
+        </div>
     </div>
-    <div>
-      <app-summary-card></app-summary-card>
-      <app-add-todo></app-add-todo>
-    </div>
-  </div>
 </div>

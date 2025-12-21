@@ -10,8 +10,13 @@
     "format": "prettier --write \"src/**/*.{ts,html,scss,css,json}\""
   },
   "prettier": {
-    "printWidth": 100,
+    "tabWidth": 4,
+    "useTabs": false,
     "singleQuote": true,
+    "semi": true,
+    "bracketSpacing": true,
+    "printWidth": 100,
+    "trailingComma": "es5",
     "overrides": [
       {
         "files": "*.html",
