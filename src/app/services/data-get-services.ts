@@ -1,14 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { TodoItem } from '../models/todo-item';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataGetServices {
-  constructor(private http: HttpClient) {}
+  private readonly STORAGE_KEY = 'todo-items';
 
-  getTodoItems<T>(url: string): Observable<T[]> {
-    return this.http.get<T[]>(url);
+  getTodoItems(): TodoItem[] {
+    const storedData = localStorage.getItem(this.STORAGE_KEY);
+    if (storedData) {
+      try {
+        return JSON.parse(storedData) as TodoItem[];
+      } catch (error) {
+        console.error('Error parsing localStorage data:', error);
+        return [];
+      }
+    }
+    return [];
+  }
+
+  saveTodoItems(items: TodoItem[]): void {
+    try {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(items));
+    } catch (error) {
+      console.error('Error saving to localStorage:', error);
+    }
   }
 }

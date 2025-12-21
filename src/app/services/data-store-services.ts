@@ -21,9 +21,7 @@ export class DataStoreServices {
   }
 
   public loadTodoItems(): void {
-    this.dataGetServices.getTodoItems<TodoItem>('assets/data.json').subscribe((data) => {
-      this.todoItems.set(data);
-    });
+    this.todoItems.set(this.dataGetServices.getTodoItems());
   }
 
   public getTodoItems(): Signal<TodoItem[]> {
@@ -34,15 +32,18 @@ export class DataStoreServices {
     this.todoItems.update((items) =>
       items.map((item) => (item.id === id ? { ...item, ...updatedItem } : item)),
     );
+    this.dataGetServices.saveTodoItems(this.todoItems());
   }
 
   public addTodoItem(item: Omit<TodoItem, 'id'>): void {
     const newId = this.maxId() + 1;
     const newItem: TodoItem = { ...item, id: newId };
     this.todoItems.update((items) => [...items, newItem]);
+    this.dataGetServices.saveTodoItems(this.todoItems());
   }
 
   public deleteTodoItem(id: number): void {
     this.todoItems.update((items) => items.filter((item) => item.id !== id));
+    this.dataGetServices.saveTodoItems(this.todoItems());
   }
 }
