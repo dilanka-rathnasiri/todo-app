@@ -1,7 +1,14 @@
 .card-body {
-  display: flex;
+    display: flex;
 }
 
 #itemViewContent {
-  flex-grow: 1;
+    flex-grow: 1;
+}
+
+#itemViewRightBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
 }
