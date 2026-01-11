@@ -17,24 +17,23 @@ A modern, feature-rich Todo application built with Angular 20. This application 
 
 ## Tech Stack
 
-- **Angular** 20.3.0 - Modern Angular framework with Signals
-- **Bootstrap** 5.3.8 - Responsive UI components
-- **TypeScript** 5.9.2 - Type-safe development
-- **RxJS** 7.8.0 - Reactive programming
+- **Angular** - Modern Angular framework with Signals
+- **Bootstrap** - Responsive UI components
+- **TypeScript** - Type-safe development
 - **Angular Signals** - Reactive state management
 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
-- **Node.js** (v18 or higher recommended)
-- **npm** (comes with Node.js) or **yarn**
+- **Node.js**
+- **npm**
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/dilanka-rathnasiri/todo-app.git
 cd todo-app
 ```
 
@@ -77,20 +76,10 @@ ng build --watch --configuration development
 
 ## Code Formatting
 
-The project uses Prettier for code formatting. To format all code:
+The project uses [Prettier](https://prettier.io/) for code formatting. To format all code:
 
 ```bash
 npm run format
-```
-
-## Running Unit Tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use:
-
-```bash
-npm test
-# or
-ng test
 ```
 
 ## Project Structure
